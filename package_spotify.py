@@ -38,10 +38,10 @@ class Spotify:
             return None
 
 
-    def get_id_artist(self):
+    def get_id_artist(self, token):
+        print(f'token untuk ambil id {token}')
         id_artist = []
         name_artist = []
-        token_spotify = self.get_token_spotify()
         url = self.url_param
         params = {
             'q': 'genre:"indonesian"',
@@ -50,7 +50,7 @@ class Spotify:
             'market': 'ID'
         }
         headers = {
-            'Authorization': f'Bearer {token_spotify}'  
+            'Authorization': f'Bearer {token}'  
         }
         response = requests.get(url, params=params, headers=headers)
         search_data = response.json()
@@ -61,30 +61,22 @@ class Spotify:
             name_artist.append(artis_name)
             id_artist.append(artis_id)
 
-        print("Nama-nama artis dari market Indonesia: ---> sudah ada")
-        print(name_artist)
-        print("ID artis dari market Indonesia:---> sudah ada")
-        print(id_artist)
+        # print("Nama-nama artis dari market Indonesia: ---> sudah ada")
+        # print(name_artist)
+        print(f"ID artis dari market Indonesia:---> {id_artist}")
+        # print(id_artist)
         return id_artist
     
-    def get_all_data(sefl):
+    def get_all_data(sefl, token, id):
+        print(f'token untuk ambil semua data {token}')
         all_source_data = []
-        token_spotify = sefl.get_token_spotify()
-        id = sefl.get_id_artist()
         headers = {
-            'Authorization': f'Bearer {token_spotify}'
+            'Authorization': f'Bearer {token}'
         }
         for artist_id in id:
-            # url = f'https://api.spotify.com/v1/artists/{artist_id}/top-tracks?market=ID'
             url = f'https://api.spotify.com/v1/artists/{artist_id}/top-tracks'
             top_track_response = requests.get(url, headers=headers)
             source_data = top_track_response.json()
             all_source_data.append(source_data)
-        print(headers)
         return all_source_data
 
-url_param = os.getenv('url_param')
-spotify_intance = Spotify(url_param)
-# token = spotify_intance.get_token_spotify()
-id_name = spotify_intance.get_id_artist()
-data = spotify_intance.get_all_data()
