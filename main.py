@@ -1,5 +1,6 @@
-from package.load_data import Mongodb
+from package.package_mongo import Mongodb
 from package.package_spotify import Spotify
+from package.transform import Transformer
 from dotenv import load_dotenv
 
 import os
@@ -19,4 +20,6 @@ if __name__ == '__main__':
     mongodb_instance = Mongodb(database, collection)
     # load_data = mongodb_instance.load_data_to_mongo(data)
     # data_mongodb = mongodb_instance.get_data_mongo()
-    data_transform = mongodb_instance.json_parser()
+    list_album, list_song, list_artist = mongodb_instance.json_parser()
+    transform = Transformer(list_album, list_song, list_artist)
+    data_album = transform.get_data_album()
