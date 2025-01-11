@@ -29,6 +29,7 @@ class Mongodb:
 
             # Return metadata
             print(f'batch_id = {batch_id}')
+            print(f'jumlah batch = {len(batch_id)}')
             return {"status": "success", "batch_id": batch_id}
 
         except Exception as e:

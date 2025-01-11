@@ -37,7 +37,6 @@ class Spotify:
             print(f"Gagal mendapatkan token Spotify. Status Code: {response.status_code}, Response: {response.text}")
             return None
 
-
     def get_id_artist(self, token):
         # print(f'token untuk ambil id {token}')
         id_artist = []
@@ -80,3 +79,8 @@ class Spotify:
             all_source_data.append(source_data)
         return all_source_data
 
+# url_param = os.getenv('url_param')
+# spotify_intance = Spotify(url_param)
+# # token = spotify_intance.get_token_spotify()
+# id_name = spotify_intance.get_id_artist()
+# data = spotify_intance.get_all_data()
