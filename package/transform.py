@@ -20,8 +20,34 @@ class Transformer:
         df_album = df_album.drop_duplicates(subset=['album_name'])
         # engine = self.postgres_conn.connect()
         # df_album.to_sql('album_table', con=engine, if_exists='replace', index=False)
-        df_album.to_csv('/home/andhika/ETL_pipeline_spotify/data/new_album1.csv', index=False)
+        df_album.to_csv('/home/andhika/ETL_pipeline_spotify/data/new_album3.csv', index=False)
         # print('success get data album and ingest data to db')
 
 
         return df_album 
+    
+    def get_data_song(self):
+        data = self.song
+        column_song = ['song_id', 'song_name',  'popularity', 'duration', 'track_number', 'song_url']
+
+        df_song = pd.DataFrame(data, columns=column_song)
+        df_song = df_song.drop_duplicates(subset=['song_name'])
+        df_song['duration'] = df_song['duration'] / 60000
+        # engine = self.postgres_conn.connect()
+        # df_song.to_sql('song_table', con=engine, if_exists='replace', index=False)
+        df_song.to_csv('/home/andhika/ETL_pipeline_spotify/data/new_song.csv', index=False)
+        print('success get data song and ingest data to db')
+
+        return df_song
+    
+    def get_data_artist(self):
+        data = self.artist
+        column_artist = ['artist_id', 'artist_name',  'type',  'artist_url']
+        df_artist = pd.DataFrame(data, columns= column_artist)
+        df_artist = df_artist.drop_duplicates(subset=['artist_name'])
+        # engine = self.postgres_conn.connect()
+        # df_artist.to_sql('artist_table', con=engine, if_exists='replace', index=False)
+        df_artist.to_csv('/home/andhika/ETL_pipeline_spotify/data/new_artist.csv', index=False)
+        print('success get data artist and ingest data to db')
+
+        return df_artist

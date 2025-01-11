@@ -38,7 +38,7 @@ class Spotify:
             return None
 
     def get_id_artist(self, token):
-        # print(f'token untuk ambil id {token}')
+        print(f'token untuk ambil id {token}')
         id_artist = []
         name_artist = []
         url = self.url_param
@@ -67,7 +67,7 @@ class Spotify:
         return id_artist
     
     def get_all_data(sefl, token, id):
-        # print(f'token untuk ambil semua data {token}')
+        print(f'token untuk ambil semua data {token}')
         all_source_data = []
         headers = {
             'Authorization': f'Bearer {token}'

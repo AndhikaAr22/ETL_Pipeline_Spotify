@@ -2,8 +2,6 @@ from pymongo import MongoClient
 from dotenv import load_dotenv
 import json
 import os
-import uuid
-from datetime import datetime
 load_dotenv()
     
 class Mongodb:
@@ -15,29 +13,12 @@ class Mongodb:
 
     def load_data_to_mongo(self, data):
         try:
-            # Generate batch_id using UUID and timestamp
-            batch_id = f"{datetime.now().strftime('%Y%m%d%H%M%S')}_{uuid.uuid4().hex[:6]}"
-            
-            # Add batch_id to each document
-            for item in data:
-                item['batch_id'] = batch_id
-            
-            
-            # Insert data into MongoDB
             result = self.collection.insert_many(data)
-            # print(f"Inserted document IDs: {result.inserted_ids}")
-
-            # Return metadata
-            print(f'batch_id = {batch_id}')
-            print(f'jumlah batch = {len(batch_id)}')
-            return {"status": "success", "batch_id": batch_id}
-
+            print(f"Inserted document IDs: {result.inserted_ids}")
         except Exception as e:
             print(f"Error inserting data: {e}")
-            return {"status": "failure", "error": str(e)}
 
-        finally:
-            self.client.close()
+        # self.client.close()
     
     def get_data_mongo(self):
         file_path = '/home/andhika/ETL_pipeline_spotify/data/mongodb_data.json'
