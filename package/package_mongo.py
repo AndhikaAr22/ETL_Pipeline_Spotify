@@ -75,7 +75,4 @@ class Mongodb:
                 artist = [id_artist, name_artist, type_artist, url_artist]
                 list_artis.append(artist)
 
-        # print(f"Albums: {list_album}")
-        # print(f"Songs: {list_lagu}")
-        # print(f"Artists: {list_artis}")
         return list_album, list_lagu, list_artis
