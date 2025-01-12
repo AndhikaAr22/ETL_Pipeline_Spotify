@@ -1,5 +1,7 @@
 from google.cloud import bigquery
 
+# Nama class harus diubah lagi
+
 class LoadData:
     client = bigquery.Client.from_service_account_json('', project='project-bq-satu')
     
