@@ -3,4 +3,4 @@
 /home/andhika/ETL_pipeline_spotify/env
 __pycache__
 .env
-env
+env/
