@@ -1,6 +1,6 @@
-from package.package_mongo import Mongodb
-from package.package_spotify import Spotify
-from package.transform import Transformer
+from dags.package.package_mongo import Mongodb
+from dags.package.package_spotify import Spotify
+from dags.package.transform import Transformer
 from dotenv import load_dotenv
 
 import os

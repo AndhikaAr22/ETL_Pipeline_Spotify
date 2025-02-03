@@ -1,0 +1,18 @@
+[2025-02-03T08:35:45.932+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-02-03T08:35:46.026+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: simple_dag.print_hello scheduled__2024-02-10T00:00:00+00:00 [queued]>
+[2025-02-03T08:35:46.046+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: simple_dag.print_hello scheduled__2024-02-10T00:00:00+00:00 [queued]>
+[2025-02-03T08:35:46.052+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2025-02-03T08:35:46.140+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): print_hello> on 2024-02-10 00:00:00+00:00
+[2025-02-03T08:35:46.177+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62 DeprecationWarning: This process (pid=196) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-02-03T08:35:46.171+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'simple_dag', 'print_hello', 'scheduled__2024-02-10T00:00:00+00:00', '--job-id', '13', '--raw', '--subdir', 'DAGS_FOLDER/simple_dag.py', '--cfg-path', '/tmp/tmp7mybd30t']
+[2025-02-03T08:35:46.179+0000] {standard_task_runner.py:64} INFO - Started process 206 to run task
+[2025-02-03T08:35:46.179+0000] {standard_task_runner.py:91} INFO - Job 13: Subtask print_hello
+[2025-02-03T08:35:46.362+0000] {task_command.py:426} INFO - Running <TaskInstance: simple_dag.print_hello scheduled__2024-02-10T00:00:00+00:00 [running]> on host 43cbcdd7415a
+[2025-02-03T08:35:46.543+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='simple_dag' AIRFLOW_CTX_TASK_ID='print_hello' AIRFLOW_CTX_EXECUTION_DATE='2024-02-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-02-10T00:00:00+00:00'
+[2025-02-03T08:35:46.546+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-02-03T08:35:46.608+0000] {logging_mixin.py:188} INFO - Hello, Airflow!
+[2025-02-03T08:35:46.613+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-02-03T08:35:46.615+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-02-03T08:35:46.639+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=simple_dag, task_id=print_hello, run_id=scheduled__2024-02-10T00:00:00+00:00, execution_date=20240210T000000, start_date=20250203T083546, end_date=20250203T083546
+[2025-02-03T08:35:46.712+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-02-03T08:35:46.758+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
